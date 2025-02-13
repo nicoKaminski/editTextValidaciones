@@ -29,18 +29,17 @@ public class MainActivity extends AppCompatActivity {
         String nombre = binding.etNombre.getText().toString();
         String password = binding.etPass.getText().toString();
 
-        if (nombre.isEmpty()) {
-            binding.etNombre.setError("Debes agregar un Nombre");
+        if (!Validaciones.validarNombre(nombre)) {
+            binding.etNombre.setError("Debes agregar un Nombre correcto");
         }
-        if (password.isEmpty()) {
-            binding.etNombre.setError("Debes agregar una Contraseña");
-        }
-        if (nombre.length() < 3) {
-            binding.etNombre.setError("El nombre debe tener al menos 3 caracteres");
+        if (!Validaciones.validarPassword(password)) {
+            binding.etPass.setError("Debes agregar una Contraseña");
         }
         if (nombre.length() > 3 && password.length() > 3) {
             Toast.makeText(this, "El nombre es: " + nombre + " y la contraseña es: " + password, Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
 }
